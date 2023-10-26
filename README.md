@@ -1,1 +1,3 @@
-# ground.zero.modular.tracker.configuration
+# Configuration
+
+GitOps setup for modular monolith workshop.
