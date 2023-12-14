@@ -1,9 +1,10 @@
-applicationInformation:
-  name: "MyApp"
-  version: 1
-
-configs:
-  - "config1"
-  - "config2"
-
-url: "https://example.com"
+AppConfiguration:
+  applicationInformation:
+    name: "MyApp"
+    version: 1
+  
+  configs:
+    - "config1"
+    - "config2"
+  
+  url: "https://example.com"
