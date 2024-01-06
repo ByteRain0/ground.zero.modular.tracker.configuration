@@ -1,0 +1,32 @@
+Logging:
+  LogLevel:
+    Default: Information
+    Microsoft.AspNetCore: Warning
+
+AllowedHosts: "*"
+
+ReverseProxy:
+  Clusters:
+    habits-api-cluster:
+      Destinations:
+        habits-api:
+          Address: "https://localhost:7240"
+
+  Routes:
+    forward-habits-api-habits-route:
+      ClusterId: habits-api-cluster
+      Match:
+        Path: "/api/{version}/habits/{**catch-all}"
+      RateLimiterPolicy: rate-limiter-fixed-window
+
+    forward-habits-api-identity-route:
+      ClusterId: habits-api-cluster
+      Match:
+        Path: "/api/{version}/users/{**catch-all}"
+      RateLimiterPolicy: rate-limiter-fixed-window
+
+    forward-habits-api-ratings-route:
+      ClusterId: habits-api-cluster
+      Match:
+        Path: "/api/{version}/ratings/{**catch-all}"
+      RateLimiterPolicy: rate-limiter-fixed-window
